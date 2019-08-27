@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
             }
             else if (arrowTrans[0].position == secondOpt)
             {
-                Debug.Log("Second option clicked");
+                Debug.Log("Second option clicked; this is the modified game");
             }
             else if (arrowTrans[0].position == thirdOpt)
             {
