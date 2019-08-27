@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour
+{
+    private int count;
+    [SerializeField] private Transform[] arrowTrans;
+    // Start is called before the first frame update
+    void Start()
+    {
+        count = 0;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        var firstOpt = new Vector3(-4f, 1.3f);
+        var secondOpt = new Vector3(-4f, -0.8f);
+        var thirdOpt = new Vector3(-4f, -2.7f);
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (count == 0)
+            {
+                
+                arrowTrans[0].position = secondOpt;
+                count++;
+            }
+            else if(count == 1)
+            {
+                arrowTrans[0].position = thirdOpt;
+                count++;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if(count == 1)
+            {
+                arrowTrans[0].position = firstOpt;
+                count--;
+            }
+            else if(count == 2)
+            {
+                arrowTrans[0].position = secondOpt;
+                count--;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if(arrowTrans[0].position == firstOpt)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else if (arrowTrans[0].position == secondOpt)
+            {
+                Debug.Log("Second option clicked");
+            }
+            else if (arrowTrans[0].position == thirdOpt)
+            {
+                Application.Quit();
+            }
+        }
+
+    }
+}
