@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private int count;
+    public AudioSource Move_Down;
+    public AudioSource Move_Up;
+    public AudioSource Select_Option;
     [SerializeField] private Transform[] arrowTrans;
     // Start is called before the first frame update
     void Start()
-    {
+    {      
         count = 0;
     }
 
@@ -21,6 +24,7 @@ public class MainMenu : MonoBehaviour
         var thirdOpt = new Vector3(-4f, -2.7f);
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            Move_Down.Play();
             if (count == 0)
             {
                 
@@ -35,6 +39,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Move_Up.Play();
             if(count == 1)
             {
                 arrowTrans[0].position = firstOpt;
@@ -48,13 +53,14 @@ public class MainMenu : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
+            Select_Option.Play();
             if(arrowTrans[0].position == firstOpt)
             {
                 SceneManager.LoadScene(1);
             }
             else if (arrowTrans[0].position == secondOpt)
             {
-                Debug.Log("Second option clicked; this is the modified game");
+                Debug.Log("Second option clicked");
             }
             else if (arrowTrans[0].position == thirdOpt)
             {
